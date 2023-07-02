@@ -13,10 +13,7 @@ class MainViewModel  @Inject constructor(
 
     fun navigateToNextScreen() {
         navigationService.navController.navigate(MainRoute.History.route)
-    }
-
-    fun back(){
-        //        navigationService.navController.popBackStack(MainRoute.History.route, false)
+//        navigationService.navController.popBackStack(MainRoute.History.route, true)
     }
 
 }
