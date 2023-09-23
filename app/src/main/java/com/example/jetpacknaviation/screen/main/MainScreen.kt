@@ -21,7 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.jetpacknaviation.screen.history.customDayFromDate
+import com.example.jetpacknaviation.screen.history.CustomDayFromDate
 
 
 @Composable
@@ -31,22 +31,23 @@ fun MainScreen() {
 
     Column(modifier = Modifier.fillMaxSize()) {
 
-         Button(modifier = Modifier.fillMaxWidth()
-             .padding(horizontal = 20.dp), onClick = {
-             mainViewModel.navigateToNextScreen()
-         }) {
-             Text(text = "Go to History Screen")
-         }
+        Button(modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 20.dp), onClick = {
+            mainViewModel.navigateToNextScreen()
+        }) {
+            Text(text = "Go to History Screen")
+        }
 
-            customDayFromDate()
+        CustomDayFromDate()
 
-        /* textfields()
+        /* TextFields()
 
          Spacer(modifier = Modifier.height(20.dp))
 
          Box(modifier = Modifier.padding(20.dp)) {
 
-             textfields()
+             TextFields()
          }
          Spacer(modifier = Modifier.height(20.dp))
 
@@ -105,44 +106,43 @@ fun MainScreen() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun textfields() {
+fun TextFields() {
     var text = ""
 
     val interactionSource = remember { MutableInteractionSource() }
     val isFocused by interactionSource.collectIsFocusedAsState()
 
-    val IndicatorUnfocusedWidth = 1.dp
-    val IndicatorFocusedWidth = 2.dp
-    val TextFieldPadding = 16.dp
+    val indicatorUnfocusedWidth = 1.dp
+    val indicatorFocusedWidth = 2.dp
+    val textFieldPadding = 16.dp
 
     val indicatorColor = if (isFocused) Color.Red else Color.Gray
-    val indicatorWidth = if (isFocused) IndicatorFocusedWidth else IndicatorUnfocusedWidth
+    val indicatorWidth = if (isFocused) indicatorFocusedWidth else indicatorUnfocusedWidth
 
     TextField(
         value = text,
         onValueChange = {
-            text = it },
-        label={Text("Label")},
+            text = it
+        },
+        label = { Text("Label") },
         interactionSource = interactionSource,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
             .drawBehind {
                 val strokeWidth = indicatorWidth.value * density
                 val y = size.height - strokeWidth / 2
                 drawLine(
                     indicatorColor,
-                    Offset(TextFieldPadding.toPx(), y),
-                    Offset(size.width - TextFieldPadding.toPx(), y),
+                    Offset(textFieldPadding.toPx(), y),
+                    Offset(size.width - textFieldPadding.toPx(), y),
                     strokeWidth
                 )
             },
         colors = TextFieldDefaults.textFieldColors(
             containerColor = Transparent,
-            focusedIndicatorColor =  Transparent,
+            focusedIndicatorColor = Transparent,
             unfocusedIndicatorColor = Transparent,
             disabledIndicatorColor = Transparent
         )
     )
-
-
-
 }

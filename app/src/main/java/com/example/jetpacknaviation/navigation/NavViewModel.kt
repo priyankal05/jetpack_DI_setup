@@ -9,7 +9,6 @@ import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.compose.DialogNavigator
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import com.example.jetpacknaviation.screen.history.HistoryScreen
 import com.example.jetpacknaviation.screen.main.MainScreen
 import dagger.hilt.android.lifecycle.HiltViewModel

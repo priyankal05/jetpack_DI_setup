@@ -2,10 +2,8 @@ package com.example.jetpacknaviation.screen.history
 
 import android.media.AudioManager
 import android.media.MediaPlayer
-import android.os.Build
 import android.util.Log
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -37,32 +35,27 @@ import java.util.Calendar
 import java.util.Locale
 
 
-@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HistoryScreen(){
+fun HistoryScreen() {
 
-    val mainViewModel =  hiltViewModel<HistoryViewModel>()
+    val mainViewModel = hiltViewModel<HistoryViewModel>()
 
 
     Surface(
         modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
     ) {
 
-        Scaffold(
-            topBar = {
-                TopAppBar(
-                    title = {
-                        Text(
-                            text = "Custom Toast in Android",
-                            modifier = Modifier.fillMaxWidth(),
+        Scaffold(topBar = {
+            TopAppBar(title = {
+                Text(
+                    text = "Custom Toast in Android", modifier = Modifier.fillMaxWidth(),
 
-                            textAlign = TextAlign.Center,
-                            color = Color.White
-                        )
-                    })
-            }) {it->
-            customDayFromDate()
+                    textAlign = TextAlign.Center, color = Color.White
+                )
+            })
+        }) { it ->
+            CustomDayFromDate()
 //            customToastUI()
         }
     }
@@ -71,8 +64,11 @@ fun HistoryScreen(){
 
 
 @Composable
-fun customDayFromDate() {
-    val dates = listOf(25, 26, 27, 28, 29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25)
+fun CustomDayFromDate() {
+    val dates = listOf(
+        25, 26, 27, 28, 29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+        10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25
+    )
 
     val firstDate = dates[0]
 
@@ -96,9 +92,8 @@ fun customDayFromDate() {
 
 
 
-    Log.e("TAG", "First date: $firstDateFormatted " )
-    Log.e("TAG", "Day of the week for the first date: $dayOfWeek" )
-    /*val currentYear = LocalDate.now().year
+    Log.e("TAG", "First date: $firstDateFormatted ")
+    Log.e("TAG", "Day of the week for the first date: $dayOfWeek")/*val currentYear = LocalDate.now().year
     val currentMonth = LocalDate.now().monthValue
 
     val formatter = DateTimeFormatter.ofPattern("d/M/yyyy")
@@ -108,17 +103,19 @@ fun customDayFromDate() {
     val dayOfWeek = date.dayOfWeek*/
 
 }
+
 @Composable
-fun customToastUI() {
+fun CustomToastUI() {
     val ctx = LocalContext.current
     val mediaPlayer = MediaPlayer()
 
-    Column(modifier = Modifier
-        .fillMaxWidth()
-        .fillMaxHeight()
-        .fillMaxSize()
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight()
+            .fillMaxSize()
 
-        .padding(6.dp),
+            .padding(6.dp),
 
         verticalArrangement = Arrangement.Center,
 
@@ -139,10 +136,9 @@ fun customToastUI() {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        Button(
-            modifier = Modifier
-                .width(300.dp)
-                .padding(7.dp),
+        Button(modifier = Modifier
+            .width(300.dp)
+            .padding(7.dp),
 
             onClick = {
 

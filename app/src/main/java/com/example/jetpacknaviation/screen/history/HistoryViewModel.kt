@@ -8,9 +8,9 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class HistoryViewModel  @Inject constructor(
+class HistoryViewModel @Inject constructor(
     private val navigationService: NavigationService
-): ViewModel() {
+) : ViewModel() {
 
     fun navigateToNextScreen() {
         navigationService.navController.navigate(MainRoute.Home.route)

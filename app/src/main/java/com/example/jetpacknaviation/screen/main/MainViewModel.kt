@@ -7,13 +7,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel  @Inject constructor(
+class MainViewModel @Inject constructor(
     private val navigationService: NavigationService
-): ViewModel() {
+) : ViewModel() {
 
     fun navigateToNextScreen() {
         navigationService.navController.navigate(MainRoute.History.route)
 //        navigationService.navController.popBackStack(MainRoute.History.route, true)
     }
-
 }
